@@ -5,8 +5,9 @@ var myApp = angular.module('myApp', []);
 
 
 myApp.controller('AddMoviesController', function ($scope) {
-    $scope.submitMovie= function(){
-      console.log('cool');
+    $scope.submitMovie= function(movie){
+    movies.push(movie);
+       $scope.movie={};
     }
 
 });

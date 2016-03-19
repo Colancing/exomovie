@@ -10,10 +10,10 @@
 <section ng-controller="AddMoviesController">
     <button>Rechercher un  film</button>
     <form action="#">
-        <input type="text" ng-model="title" placeholder="titre">
-        <input type="text" ng-model="releaseYear" placeholder="année">
-        <input type="text" ng-model="directors" placeholder="producteur">
-        <button ng-click="submitMovie()">Ajouter le film à la liste</button>
+        <input type="text" ng-model="movie.title" placeholder="titre">
+        <input type="text" ng-model="movie.releaseYear" placeholder="année">
+        <input type="text" ng-model="movie.directors" placeholder="producteur">
+        <button ng-click="submitMovie(movie)">Ajouter le film à la liste</button>
     </form>
 </section>
 <section ng-controller="ShowMoviesController">
