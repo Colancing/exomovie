@@ -4,48 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>exo</title>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap.css/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
-
 <body>
+<section class="container" ng-controller="ShowMoviesController">
 
-<section ng-controller="AddMoviesController" class="container">
-    <button>Rechercher un film</button>
-    <form action="#" role="form" class="col-lg-4">
-        <h1>Ajouter un film</h1>
-        <div class="form-group">
-            <label for="title">Nom du film </label>
-            <input id="title"  class="form-control" type="text" ng-model="movie.title" placeholder="titre">
-        </div>
-        <div class="form-group">
-            <label for="year">Année </label>
-            <input id="year" class="form-control" type="text" ng-model="movie.releaseYear" placeholder="année">
-        </div>
-        <div class="form-group">
-            <label for="directors">Producteur </label>
-            <input id="directors" class="form-control" type="text" ng-model="movie.releaseYear" placeholder="année">
-        </div>
-        <br>
-        <button ng-click="submitMovie(movie)">Ajouter le film à la liste</button>
-    </form>
-</section>
-<section ng-controller="ShowMoviesController" class="container">
-    <h1>Ma liste de film</h1>
-    <ul class="list-unstyled" ng-repeat="movie in movies">
-        <li>titre : {{movie.title}}</li>
-        <li>réalisateur : {{movie.directors}}</li>
-        <li>acteurs : {{movie.actors}}</li>
-        <li>année : {{movie.releaseYear}}</li>
-        <li>résumé : {{movie.synopsis}}</li>
-        <li>avis : {{movie.rate}}</li>
+    <header class="page-header">
+        <h1>Dans ma vidéothèque
+            <small>{{movies.length}} films</small>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#movie-form-modal">Ajouter un film</button>
+        </h1>
+    </header>
+
+
+    <div id="movie-form-modal" class="modal fade" ng-controller="AddMovieController">
+            <div class="modal-content span10">
+                <header class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">Ajouter un film</h3>
+                </header>
+                <section class="modal-body">
+                    <form role="form" class="form-horizontal">
+                        <div class="control-group">
+                            <label for="title" class="control-label">Nom du film </label>
+                            
+                           <div class="controls">
+                               <input id="title" type="text" ng-model="movie.title"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="year" class="control-label">Année de sortie : </label>
+                            <input id="year" class="form-control" type="text" ng-model="movie.releaseYear">
+                        </div>
+                        <div class="form-group">
+                            <label for="directors" class="control-label">Producteur : </label>
+                            <input id="directors" class="form-control" type="text" ng-model="movie.directors">
+                        </div>
+                        <div class="form-group">
+                            <label for="actors" class="control-label">Acteurs :</label>
+                            <input id="actors" class="form-control" type="text" ng-model="movie.actors">
+                        </div>
+                        <div class="form-group">
+                            <label for="synopsis" class="control-label">Synopsis :</label>
+                            <textarea id="synopsis" class="form-control" ng-model="movie.synopsis"></textarea>
+                        </div>
+                        <div class="form-group-group">
+                            <label for="rate" class="control-label">Note :</label>
+                            <input id="rate" type="number" class="form-control" placeholder="entre 1 et 5"
+                                   ng-model="movie.rate">
+                        </div>
+                    </form>
+                </section>
+                <footer class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="submitMovie(movie)">Ajouter le
+                        film
+                    </button>
+                    <button class="btn btn-danger btn-small" data-dismiss="modal">Annuler</button>
+                </footer>
+            </div>
+    </div>
+
+    <ul class="thumbnails">
+        <li ng-repeat="movie in movies" class="span12">
+            <img ng-src="{{movie.poster}}" class="span2">
+            <div class="caption">
+                <h3>{{movie.title}}</h3>
+                <p><strong>réalisateur :</strong> {{movie.directors}}</p>
+                <p><strong>acteurs :</strong> {{movie.actors}}</p>
+                <p><strong>année </strong>: {{movie.releaseYear}}</p>
+                <p><strong>résumé :</strong> {{movie.synopsis}}</p>
+                <p><strong>avis :</strong> {{movie.rate}}</p>
+            </div>
+        </li>
     </ul>
-    <p>Nombre de films : {{movies.length}}</p>
+
 </section>
-<script src="node_modules/jquery/dist/jquery.js"></script>
-<script src="node_modules/angular/angular.js"></script>
-<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="js/app.js"></script>
+
+<script type="text/javascript" src="lib/jquery/jquery.js"></script>
+<script type="text/javascript" src="lib/angular/angular.js"></script>
+<script type="text/javascript" src="lib/bootstrap.css/js/bootstrap.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
 </body>
 
 </html>
