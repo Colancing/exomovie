@@ -1,0 +1,11 @@
+.control-group input,.control-group textarea  {
+    margin-left: 20px;
+}
+.thumbnails .caption {
+    margin-left : 220px;
+}
+
+.thumbnails  img {
+    padding-top: 20px;
+    width: 160px;
+}
