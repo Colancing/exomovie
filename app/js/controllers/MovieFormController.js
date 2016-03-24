@@ -1,4 +1,4 @@
-myApp.controller('AddMovieController', function ($scope) {
+myApp.controller('MovieFormController', function ($scope) {
     $scope.submitMovie = function (movie) {
 
         $scope.movies.push(movie);

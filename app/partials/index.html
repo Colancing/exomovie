@@ -8,21 +8,22 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-<!--<div ng-view></div>-->
-<section class="container" ng-controller="MoviesController">
-
-<nav class="navbar navbar-fixed-top">
-    <header class="navbar-inner">
-        <section class="container">
-            <a class="brand" href="#/home">AngularMovie</a>
-            <ul class="nav">
-                <li><a href="#/movies">Tous les films</a></li>
-            </ul>
-        </section>
-    </header>
+<div ng-view></div>
+<nav>
+    <a href="#/index" class="btn btn-primary">Page d'accueil</a>
+    <a href="#/movies" class="btn btn-primary">Tous les films</a>
 </nav>
-
-
+<section class="container" ng-controller="MoviesController">
+    <header class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <section class="container">
+                <a class="brand" href="#/home">AngularMovie</a>
+                <ul class="nav">
+                    <li><a href="#/movies">Mes films</a></li>
+                </ul>
+            </section>
+        </div>
+    </header>
     <div class="page-header">
         <h1>Dans ma vidéothèque
             <small>{{movies.length}} films</small>
@@ -107,11 +108,11 @@
 
 <script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
-<script type="text/javascript" src="../node_modules/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="../node_modules/angular-route.js"></script>
 <script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="app.js"></script>
-<script type="text/javascript" src="js/controllers/MoviesController.js"></script>
 <script type="text/javascript" src="js/controllers/MovieFormController.js"></script>
+<script type="text/javascript" src="js/controllers/MoviesController.js"></script>
 </body>
 
 </html>

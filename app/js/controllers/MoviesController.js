@@ -1,4 +1,4 @@
-myApp.controller('ShowMoviesController', function ($scope,$http) {
+myApp.controller('MoviesController', function ($scope,$http) {
 
     $http.get("movies.json").success(function(data) {
         $scope.movies=data.movies;
