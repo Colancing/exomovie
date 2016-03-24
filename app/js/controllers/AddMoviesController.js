@@ -1,13 +1,7 @@
-myApp.controller('AddMovieController', function ($scope, $http) {
+myApp.controller('AddMovieController', function ($scope) {
     $scope.submitMovie = function (movie) {
-        $http.get('movies.json', movie)
-            .success(function(data){
-                $scope.movies=data;
-                $scope.movies.push(movie);
-                $scope.movie = {};
-            })
-            .error(function(resp){
-                alert(resp);
-            });
-    };
+
+        $scope.movies.push(movie);
+        $scope.movie = {};
+    }
 });
