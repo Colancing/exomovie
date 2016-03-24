@@ -4,3 +4,4 @@
 node_modules/angular/*
 node_modules/angular-route/*
 app/node_modules/*
+node_modules/*
