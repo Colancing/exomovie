@@ -1,3 +1,6 @@
+body{
+    padding-top: 70px;
+}
 .control-group input,.control-group textarea  {
     margin-left: 20px;
 }
