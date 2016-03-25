@@ -1,14 +1,36 @@
-body{
+body {
     padding-top: 70px;
-}
-.control-group input,.control-group textarea  {
-    margin-left: 20px;
-}
-.thumbnails .caption {
-    margin-left : 220px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
 }
 
-.thumbnails  img {
+.control-group input, .control-group textarea {
+    margin-left: 20px;
+}
+
+.thumbnails .caption {
+    margin-left: 220px;
+}
+
+.thumbnails img {
     padding-top: 20px;
     width: 160px;
+}
+
+#nav-top a {
+    font-size: 24px;
+    color: deeppink;
+;
+    padding-left: 35px;
+}
+.presentation{
+    margin: 40px auto;
+    font-size:50px;
+    text-align: center;
+}
+.presentation h1 {
+    color: #0063c2;
+}
+#img-main{
+    margin:0 auto;
 }
