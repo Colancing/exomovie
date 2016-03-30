@@ -19,7 +19,7 @@ myApp.config(['$routeProvider', function($routeProvider){
         })
         .when('/movies', {
             templateUrl:"partials/movies.html",
-            //controller:"MoviesController"
+            controller:"MoviesController"
         })
         .when('/movieForm', {
             templateUrl:'partials/moviesForm.html'

@@ -1,5 +1,6 @@
 <!--Voir comment sortir le modal, je n'y arrive pas-->
-<section class="container" ng-controller="MoviesController">
+<section class="container">
+    <!--ng-controller="MoviesController"-->
     <div class="page-header">
         <h1>Dans ma vidéothèque
             <small>{{movies.length}} films</small>
@@ -13,7 +14,10 @@
         <li ng-repeat="movie in movies" class="col-sm-12">
             <img ng-src="{{movie.poster}}" class="col-sm-2">
             <div class="caption">
-                <h3>{{movie.title}}</h3>
+                <h3>{{movie.title}}
+                    <button class="btn btn-primary" ng-click="editMovie($index)">Modifier</button>
+                    <button class="btn btn-primary" ng-click="deleteMovie($index)">Supprimer</button>
+                </h3>
                 <p><strong>réalisateur :</strong> {{movie.directors}}</p>
                 <p><strong>acteurs :</strong> {{movie.actors}}</p>
                 <p><strong>année </strong>: {{movie.releaseYear}}</p>
