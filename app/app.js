@@ -24,5 +24,9 @@ myApp.config(['$routeProvider', function($routeProvider){
         .when('/movieForm', {
             templateUrl:'partials/moviesForm.html'
         })
+        .when('/edit', {
+            templateUrl:'partials/edit.html',
+            //controller:'MovieEditController'
+        })
         .otherwise({redirectTo : '/'});
 }]);

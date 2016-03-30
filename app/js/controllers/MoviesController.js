@@ -1,4 +1,4 @@
-myApp.controller('MoviesController', function ($scope, $http) {
+myApp.controller('MoviesController', function ($scope, $http, $routeParams) {
 
     $http.get("movies.json").success(function (data) {
         $scope.movies = data.movies;
@@ -12,7 +12,7 @@ myApp.controller('MoviesController', function ($scope, $http) {
         console.log($scope.movies);
     };
 
-    $scope.editMovie =function(index){
+    $scope.gotoEdit =function(index){
         console.log(index);
     };
 });
