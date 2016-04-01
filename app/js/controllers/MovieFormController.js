@@ -1,6 +1,6 @@
 myApp.controller('MovieFormController', function ($scope,$http) {
     $scope.submitMovie = function (movie) {
-        $http.post("movies.json",movie).success(function() {
+        $http.post("http://localhost:3000/movies",movie).success(function() {
             $scope.movies.push(movie);
             $scope.movie = {};
         });

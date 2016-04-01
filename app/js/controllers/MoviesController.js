@@ -1,19 +1,27 @@
-myApp.controller('MoviesController', function ($scope, $http, $routeParams) {
+myApp.controller('MoviesController', function ($scope, $http, $location) {
 
-    $http.get("movies.json").success(function (data) {
-        $scope.movies = data.movies;
-
+    $http.get("http://localhost:3000/movies").success(function (data) {
+        $scope.movies = data;
+        console.log($scope.movies);
     }).error(function (data, statusText) {
         alert(statusText);
-    })
+    });
 
-    $scope.deleteMovie = function (index) {
-        $scope.movies.splice(index, 1);
-        console.log($scope.movies);
+    //$scope.deleteMovie = function (index) {
+    //    $scope.movies.splice(index, 1);
+    //};
+
+    $scope.deleteMovie = function(index){
+        $http.delete('http://localhost:3000/movies/' + $scope.movies[index].id)
+            .success(function(){
+                $scope.movies.splice(index, 1);
+            });
     };
 
-    $scope.gotoEdit =function(index){
-        console.log(index);
+    $scope.gotoEdit =function(path){
+        $location.path(path);
     };
+
+
 });
 

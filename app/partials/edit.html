@@ -1,51 +1,52 @@
 <div class="container">
-    <header>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3>Modifier (le film qui a l'index récupéré)</h3>
+
+    <header class="well">
+        <h3>Modification</h3>
     </header>
-    <section>
-        <form class="form-horizontal" role="form">
+    <div class="container">
+        <img ng-src="{{movie.poster}}" class="col-sm-2">
+        <form class="form-horizontal col-sm-10" role="form">
             <div class="form-group">
                 <label for="title" class="control-label col-sm-2">Nom du film </label>
                 <div class="col-sm-10">
-                    <input id="title" class="form-control" type="text" ng-model="movie.title" placeholder="movies.index.title ou un truc comme ca">
+                    <input id="title" class="form-control" type="text" ng-model="movie.title">
                 </div>
             </div>
             <div class="form-group">
                 <label for="year" class="control-label col-sm-2">Année de sortie</label>
                 <div class="col-sm-10">
-                    <input id="year" class="form-control" type="text" ng-model="movie.releaseYear" placeholder="movies.index.releaseYear ou un truc comme ca">
+                    <input id="year" class="form-control" type="text" ng-model="movie.releaseYear">
                 </div>
             </div>
             <div class="form-group">
                 <label for="directors" class="control-label col-sm-2">Producteur</label>
                 <div class="col-sm-10">
-                    <input id="directors" class="form-control" type="text" ng-model="movie.directors" placeholder="movies.index.director ou un truc comme ca">
+                    <input id="directors" class="form-control" type="text" ng-model="movie.directors">
                 </div>
             </div>
             <div class="form-group">
                 <label for="actors" class="control-label col-sm-2">Acteurs :</label>
                 <div class="col-sm-10">
-                    <input id="actors" class="form-control" type="text" ng-model="movie.actors" placeholder="movies.index.actor ou un truc comme ca">
+                    <input id="actors" class="form-control" type="text" ng-model="movie.actors">
                 </div>
             </div>
             <div class="form-group">
                 <label for="synopsis" class="control-label col-sm-2">Synopsis :</label>
                 <div class="col-sm-10">
-                    <textarea id="synopsis" class="form-control" ng-model="movie.synopsis" placeholder="movies.index.synopsis ou un truc comme ca"></textarea>
+                    <textarea id="synopsis" class="form-control" ng-model="movie.synopsis"></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label for="rate" class="control-label col-sm-2">Note :</label>
                 <div class="col-sm-10">
-                    <input id="rate" type="number" class="form-control" placeholder="movies.index.rate ou un truc comme ca"
+                    <input id="rate" type="number" class="form-control"
                            ng-model="movie.rate">
                 </div>
             </div>
         </form>
-    </section>
-    <footer>
-        <button class="btn btn-success">Modifier</button>
-        <button class="btn btn-danger btn-small">Annuler</button>
-    </footer>
+    </div>
+    <div class="well">
+        <button class="btn btn-danger btn-small" ng-click="gotoHome('/movies/$index')">Annuler</button>
+        <button class="btn btn-success" ng-click="editMovie(movie)">Modifier</button>
+    </div>
 </div>
