@@ -3,22 +3,12 @@
     {
       "id": 1,
       "title": "Avatar",
-      "releaseYear": "2010",
+      "releaseYear": 2010,
       "poster": "img/avatar.jpg",
       "directors": "James Cameron",
       "actors": "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang, Michelle Rodriguez",
       "synopsis": "Sur la lointaine planète de Pandora, Jake Sully, un héros malgré lui, se lance dans une quête de rédemption, de découverte, d'amour inattendu, dont l'issue sera un combat héroïque pour sauver toute une civilisation.",
-      "rate": 3
-    },
-    {
-      "id": 3,
-      "title": "The Grudge",
-      "releaseYear": "2004",
-      "poster": "img/thegrudge.jpg",
-      "directors": "Takashi Shimizu",
-      "actors": "Sarah Michelle Gellar, Jason Behr, Clea DuVall, Kadee Strickland, Bill Pullman",
-      "synopsis": "Dans ce qui paraît être une paisible maison de Tokyo se cache un épouvantable fléau. Quiconque franchit le seuil de la demeure est aussitôt frappé par une malédiction qui ne tardera pas à le tuer dans un sentiment d'indicible rage...",
-      "rate": 4
+      "rate": 2000
     },
     {
       "id": 4,
@@ -31,9 +21,15 @@
       "rate": 5
     },
     {
-      "title": "gergergesr",
+      "title": "lion king",
       "synopsis": "sgerger",
       "id": 5
+    },
+    {
+      "title": "tutut",
+      "releaseYear": 2003,
+      "directors": "ferfer",
+      "id": 6
     }
   ]
 }
