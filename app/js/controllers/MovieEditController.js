@@ -15,12 +15,13 @@ myApp.controller('MovieEditController', function ($scope, $http, $routeParams, $
     };
 
     $scope.editMovie = function (movie) {
-        console.log("movie", movie);
-        console.log("movies", $scope.movies)
         $http.put("http://localhost:3000/movies/" + movie.id, movie)
             .success(function () {
                 $location.path('/movies');
             })
+            .error(function (data, statusText) {
+                alert(statusText);
+            });
     };
 
 });

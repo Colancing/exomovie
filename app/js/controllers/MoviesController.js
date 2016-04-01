@@ -11,11 +11,13 @@ myApp.controller('MoviesController', function ($scope, $http, $location) {
 
 
     $scope.deleteMovie = function (index) {
-        console.log('index', index);
         $http.delete('http://localhost:3000/movies/' + $scope.movies[index].id)
             .success(function () {
                 $scope.movies.splice(index, 1);
-            });
+            })
+        .error(function (data, statusText) {
+            alert(statusText);
+        });
     };
 
     $scope.gotoEdit = function (path) {
