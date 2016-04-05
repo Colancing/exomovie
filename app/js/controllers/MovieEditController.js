@@ -4,7 +4,6 @@ myApp.controller('MovieEditController', function ($scope, $http, $routeParams, $
         .success(function (data) {
             $scope.movies = data;
             $scope.movie = $scope.movies[$routeParams.id];
-
         })
         .error(function (data, statusText) {
             alert(statusText);

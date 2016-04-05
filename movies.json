@@ -21,7 +21,7 @@
       "rate": 5
     },
     {
-      "id":3,
+      "id": 3,
       "title": "The Grudge",
       "releaseYear": "2004",
       "poster": "img/thegrudge.jpg",
@@ -39,6 +39,13 @@
       "actors": "Donnie Yen, Sammo Hung Kam-Bo, Simon Yam, Lynn Hung, Xiaoming Huang",
       "synopsis": "Film biographique sur la vie de Ip Man, pionnier du Wing Chun et maitre de Bruce Lee.",
       "rate": 5
+    },
+    {
+      "releaseYear": "jijojj",
+      "id": 5
+    },
+    {
+      "id": 6
     }
   ]
 }

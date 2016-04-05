@@ -15,8 +15,10 @@
             <img ng-src="{{movie.poster}}" class="col-sm-2">
             <div class="caption">
                 <h3>{{movie.title}}
-                    <button class="btn btn-primary" ng-click="gotoEdit('/edit/'+$index)"><span class="glyphicon glyphicon-edit"></span></button>
-                    <button class="btn btn-primary" ng-click="deleteMovie($index)"><span class="glyphicon glyphicon-trash"></span></button>
+                    <button class="btn btn-primary" ng-click="gotoEdit('/edit/'+$index)"><span
+                            class="glyphicon glyphicon-edit"></span></button>
+                    <button class="btn btn-primary" ng-click="deleteMovie($index)"><span
+                            class="glyphicon glyphicon-trash"></span></button>
                 </h3>
                 <p><strong>réalisateur :</strong> {{movie.directors}}</p>
                 <p><strong>acteurs :</strong> {{movie.actors}}</p>
@@ -27,6 +29,7 @@
         </li>
     </ul>
 
+
     <!--Le modal avec le formulaire (à sortir de là)-->
     <div id="movie-form-modal" class="modal fade" ng-controller="MovieFormController">
         <div class="modal-dialog modal-lg">
@@ -36,11 +39,18 @@
                     <h3 class="modal-title">Ajouter un film</h3>
                 </header>
                 <section class="modal-body">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
+                    <form class="form-horizontal" name="movieForm" role="form" novalidate>
+                        <div class="form-group"
+                             ng-class="{'has-error' : movieForm.inputTitle.$invalid && !movieForm.inputTitle.$pristine}">
                             <label for="title" class="control-label col-sm-2">Nom du film </label>
                             <div class="col-sm-10">
-                                <input id="title" class="form-control" type="text" ng-model="movie.title">
+                                <input id="title" name="inputTitle" class="form-control" type="text"
+                                       ng-model="movie.title" required>
+
+                                <div ng-show="movieForm.inputTitle.$invalid && !movieForm.inputTitle.$pristine"
+                                     class="help-block">
+                                    Le titre est requis.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -48,36 +58,42 @@
                             <div class="col-sm-10">
                                 <input id="year" class="form-control" type="text" ng-model="movie.releaseYear">
                             </div>
-                        </div>
+                            </div>
                         <div class="form-group">
                             <label for="directors" class="control-label col-sm-2">Producteur</label>
                             <div class="col-sm-10">
                                 <input id="directors" class="form-control" type="text" ng-model="movie.directors">
                             </div>
-                        </div>
+                            </div>
                         <div class="form-group">
                             <label for="actors" class="control-label col-sm-2">Acteurs :</label>
                             <div class="col-sm-10">
                                 <input id="actors" class="form-control" type="text" ng-model="movie.actors">
                             </div>
-                        </div>
+                            </div>
                         <div class="form-group">
                             <label for="synopsis" class="control-label col-sm-2">Synopsis :</label>
                             <div class="col-sm-10">
                                 <textarea id="synopsis" class="form-control" ng-model="movie.synopsis"></textarea>
                             </div>
-                        </div>
-                        <div class="form-group">
+                            </div>
+                        <div class="form-group"
+                             ng-class="{'has-error' : movieForm.inputRate.$invalid && !movieForm.inputRate.$pristine}">
                             <label for="rate" class="control-label col-sm-2">Note :</label>
                             <div class="col-sm-10">
-                                <input id="rate" type="number" class="form-control" placeholder="entre 1 et 5"
-                                       ng-model="movie.rate">
+                                <input id="rate" name="inputRate" type="number" class="form-control"
+                                       placeholder="entre 1 et 5"
+                                       ng-model="movie.rate" ng-pattern="/^[0-5]$/">
+                                <div ng-show="movieForm.inputRate.$invalid && !movieForm.inputRate.$pristine"
+                                     class="help-block">Mettre un nombre entier de 1 à 5
+                                </div>
                             </div>
-                        </div>
+                            </div>
                     </form>
                 </section>
                 <footer class="modal-footer">
-                    <button class="btn btn-success" data-dismiss="modal" ng-click="submitMovie(movie)">Ajouter le
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" ng-click="submitMovie(movie)"
+                            ng-disabled="movieForm.$invalid">Ajouter le
                         film
                     </button>
                     <button class="btn btn-danger btn-small" data-dismiss="modal">Annuler</button>
@@ -85,6 +101,4 @@
             </div>
         </div>
     </div>
-
-
 </section>
