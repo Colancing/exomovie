@@ -1,20 +1,37 @@
 <!--Voir comment sortir le modal, je n'y arrive pas-->
 <section class="container">
     <!--ng-controller="MoviesController"-->
-    <div class="page-header">
-        <h1>Dans ma vidéothèque
-            <small>{{movies.length}} films</small>
-            <button class="btn btn-primary" data-toggle="modal" data-target="#movie-form-modal">
-                Ajouter un film
-            </button>
-        </h1>
+    <div class="page-header container">
+        <div class="col-sm-8">
+            <h1>Dans ma vidéothèque
+                <small>{{movies.length}} films</small>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#movie-form-modal">
+                    Ajouter un film
+                </button>
+            </h1>
+        </div>
+        <div class="input-group col-sm-4" id="searchbar">
+            <input type="text" class="search-query form-control" ng-model="search" placeholder="Recherchez"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-danger" type="button">
+                        <span class=" glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+        </div>
+    </div>
+    <div id="sortering" class="container">
+        <div class="col-sm-12">
+            <span>Trier par : </span>
+            <button class="btn btn-secondary btn-xs" ng-click="order('title')">Titre</button>
+            <button class="btn btn-secondary btn-xs" ng-click="order('releaseYear')">Année</button>
+        </div>
     </div>
 
     <ul class="thumbnails list-unstyled">
-        <li ng-repeat="movie in movies" class="col-sm-12">
+        <li ng-repeat="movie in movies | filter : search | orderBy:predicate" class="col-sm-12">
             <img ng-src="{{movie.poster}}" class="col-sm-2">
             <div class="caption">
-                <h3>{{movie.title}}
+                <h3>{{movie.title | uppercase }}
                     <button class="btn btn-primary" ng-click="gotoEdit('/edit/'+$index)"><span
                             class="glyphicon glyphicon-edit"></span></button>
                     <button class="btn btn-primary" ng-click="deleteMovie(movie)"><span
@@ -24,7 +41,9 @@
                 <p><strong>acteurs :</strong> {{movie.actors}}</p>
                 <p><strong>année </strong>: {{movie.releaseYear}}</p>
                 <p><strong>résumé :</strong> {{movie.synopsis}}</p>
+                <p><strong>date :</strong> {{movie.lastViewDate | date:'dd/MM/yyyy @ h:mma'}}</p>
                 <p><strong>avis :</strong> {{movie.rate}}</p>
+                <p><strong>prix :</strong> {{movie.price | currency : "€"}}</p>
             </div>
         </li>
     </ul>
@@ -58,25 +77,25 @@
                             <div class="col-sm-10">
                                 <input id="year" class="form-control" type="text" ng-model="movie.releaseYear">
                             </div>
-                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="directors" class="control-label col-sm-2">Producteur</label>
                             <div class="col-sm-10">
                                 <input id="directors" class="form-control" type="text" ng-model="movie.directors">
                             </div>
-                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="actors" class="control-label col-sm-2">Acteurs :</label>
                             <div class="col-sm-10">
                                 <input id="actors" class="form-control" type="text" ng-model="movie.actors">
                             </div>
-                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="synopsis" class="control-label col-sm-2">Synopsis :</label>
                             <div class="col-sm-10">
                                 <textarea id="synopsis" class="form-control" ng-model="movie.synopsis"></textarea>
                             </div>
-                            </div>
+                        </div>
                         <div class="form-group"
                              ng-class="{'has-error' : movieForm.inputRate.$invalid && !movieForm.inputRate.$pristine}">
                             <label for="rate" class="control-label col-sm-2">Note :</label>
@@ -88,7 +107,7 @@
                                      class="help-block">Mettre un nombre entier de 1 à 5
                                 </div>
                             </div>
-                            </div>
+                        </div>
                     </form>
                 </section>
                 <footer class="modal-footer">

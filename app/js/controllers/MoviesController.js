@@ -11,7 +11,7 @@ myApp.controller('MoviesController', function ($scope, moviesFactory, $location)
     };
     $scope.deleteMovie = function (movie) {
         console.log(movie);
-        moviesFactory.delete({movie: 17}, function () {
+        moviesFactory.delete({movie: movie.id}, function () {
             $scope.get();
         });
 
@@ -21,4 +21,8 @@ myApp.controller('MoviesController', function ($scope, moviesFactory, $location)
         $location.path(path);
     };
     $scope.get();
+
+    //$scope.order=function(predicate){
+    //$scope.predicate=predicate;
+//};
 });
