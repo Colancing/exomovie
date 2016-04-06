@@ -7,27 +7,31 @@
 //]);
 
 var myApp = angular.module('myApp', [
-    'ngRoute'
+    'ngRoute', 'ngResource'
     //'routeAppControllers'
 ]);
 
 
-myApp.config(['$routeProvider', function($routeProvider){
+myApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl:'partials/home.html'
+            templateUrl: 'partials/home.html'
         })
         .when('/movies', {
-            templateUrl:"partials/movies.html",
-            controller:"MoviesController"
+            templateUrl: "partials/movies.html",
+            controller: "MoviesController"
         })
         .when('/movieForm', {
-            templateUrl:'partials/moviesForm.html'
+            templateUrl: 'partials/moviesForm.html'
         })
         .when('/edit/:id', {
-            templateUrl:'partials/edit.html',
-            controller:'MovieEditController'
+            templateUrl: 'partials/edit.html',
+            controller: 'MovieEditController'
         })
-        .otherwise({redirectTo : '/'});
+        .otherwise({redirectTo: '/'});
 
+    myApp.config(['$resourceProvider', function ($resourceProvider) {
+        // Don't strip trailing slashes from calculated URLs
+        $resourceProvider.defaults.stripTrailingSlashes = false;
+    }]);
 }]);

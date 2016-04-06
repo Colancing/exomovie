@@ -1,17 +1,7 @@
 {
   "movies": [
     {
-      "id": 1,
-      "title": "Avatar",
-      "releaseYear": "2010",
-      "poster": "img/avatar.jpg",
-      "directors": "James Cameron",
-      "actors": "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang, Michelle Rodriguez",
-      "synopsis": "Sur la lointaine planète de Pandora, Jake Sully, un héros malgré lui, se lance dans une quête de rédemption, de découverte, d'amour inattendu, dont l'issue sera un combat héroïque pour sauver toute une civilisation.",
-      "rate": 3
-    },
-    {
-      "id": 2,
+      "id": 7,
       "title": "Seigneur des Anneaux : La Communauté de l'Anneau",
       "releaseYear": "2003",
       "poster": "img/seigneurdesanneaux1.jpg",
@@ -21,7 +11,7 @@
       "rate": 5
     },
     {
-      "id": 3,
+      "id": 11,
       "title": "The Grudge",
       "releaseYear": "2004",
       "poster": "img/thegrudge.jpg",
@@ -31,7 +21,7 @@
       "rate": 4
     },
     {
-      "id": 4,
+      "id": 14,
       "title": "Yip Man 2",
       "releaseYear": "2010",
       "poster": "img/yipman.jpg",
@@ -41,11 +31,15 @@
       "rate": 5
     },
     {
-      "releaseYear": "jijojj",
-      "id": 5
+      "title": "test 1",
+      "rate": 5,
+      "id": 15
     },
     {
-      "id": 6
+      "title": "avatar 9",
+      "actors": "henri 4",
+      "rate": 5,
+      "id": 16
     }
   ]
 }

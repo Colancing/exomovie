@@ -1,26 +1,19 @@
-myApp.controller('MovieEditController', function ($scope, $http, $routeParams, $location) {
+myApp.controller('MovieEditController', function ($scope, $routeParams, $location, moviesFactory) {
 
-    $http.get("http://localhost:3000/movies")
-        .success(function (data) {
-            $scope.movies = data;
-            $scope.movie = $scope.movies[$routeParams.id];
+    $scope.movies = moviesFactory.query().$promise
+        .then(function (movies) {
+            var movieId = movies[$routeParams.id].id;
+            $scope.movie = moviesFactory.get({movie: movieId});
+            return $scope.movie.$promise;
         })
-        .error(function (data, statusText) {
-            alert(statusText);
+        .then(function (movie) {
+            $scope.editMovie = function () {
+                moviesFactory.update({movie: movie.id}, movie);
+                $scope.goto("/movies");
+            };
         });
 
-    $scope.gotoHome = function (path) {
+    $scope.goto = function (path) {
         $location.path(path);
     };
-
-    $scope.editMovie = function (movie) {
-        $http.put("http://localhost:3000/movies/" + movie.id, movie)
-            .success(function () {
-                $location.path('/movies');
-            })
-            .error(function (data, statusText) {
-                alert(statusText);
-            });
-    };
-
 });

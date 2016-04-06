@@ -17,7 +17,7 @@
                 <h3>{{movie.title}}
                     <button class="btn btn-primary" ng-click="gotoEdit('/edit/'+$index)"><span
                             class="glyphicon glyphicon-edit"></span></button>
-                    <button class="btn btn-primary" ng-click="deleteMovie($index)"><span
+                    <button class="btn btn-primary" ng-click="deleteMovie(movie)"><span
                             class="glyphicon glyphicon-trash"></span></button>
                 </h3>
                 <p><strong>réalisateur :</strong> {{movie.directors}}</p>

@@ -1,29 +1,24 @@
-myApp.controller('MoviesController', function ($scope, $http, $location) {
-
-    $http.get("http://localhost:3000/movies").success(function (data) {
-            $scope.movies = data;
-            console.log($scope.movies);
-        })
-        .error(function (data, statusText) {
-            alert(statusText);
-        });
-
-
-
-    $scope.deleteMovie = function (index) {
-        $http.delete('http://localhost:3000/movies/' + $scope.movies[index].id)
-            .success(function () {
-                $scope.movies.splice(index, 1);
+myApp.controller('MoviesController', function ($scope, moviesFactory, $location) {
+    $scope.get = function () {
+        moviesFactory.query().$promise
+            .then(function (movies) {
+                $scope.movies = movies;
+                console.log('fait');
             })
-        .error(function (data, statusText) {
-            alert(statusText);
+    };
+    $scope.submitMovie = function (movie) {
+        moviesFactory.save({movie: movie.id}, movie)
+    };
+    $scope.deleteMovie = function (movie) {
+        console.log(movie);
+        moviesFactory.delete({movie: 17}, function () {
+            $scope.get();
         });
+
     };
 
     $scope.gotoEdit = function (path) {
         $location.path(path);
     };
-
-
+    $scope.get();
 });
-
