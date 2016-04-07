@@ -8,8 +8,10 @@ myApp.controller('MovieEditController', function ($scope, $routeParams, $locatio
         })
         .then(function (movie) {
             $scope.editMovie = function () {
-                moviesFactory.update({movie: movie.id}, movie);
-                $scope.goto("/movies");
+                moviesFactory.update({movie: movie.id}, movie).$promise
+                    .then(function () {
+                        $scope.goto("/movies")
+                    });
             };
         });
 

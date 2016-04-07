@@ -118,8 +118,12 @@
       "price": "10.5"
     },
     {
-      "title": "coucou",
-      "id": 10
+      "title": "youyou est milliardaire",
+      "directors": "panama enterprise",
+      "rate": 5,
+      "id": 10,
+      "releaseYear": 2016,
+      "actors": "politiciens et entrepreneurs du CAC 40"
     }
   ]
 }

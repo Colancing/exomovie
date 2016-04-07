@@ -22,7 +22,4 @@ myApp.controller('MoviesController', function ($scope, moviesFactory, $location)
     };
     $scope.get();
 
-    //$scope.order=function(predicate){
-    //$scope.predicate=predicate;
-//};
 });

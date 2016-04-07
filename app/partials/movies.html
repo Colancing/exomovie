@@ -21,31 +21,57 @@
     </div>
     <div id="sortering" class="container">
         <div class="pull-right">
+            <div class="onoffswitch">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
+                       ng-model="view" ng-init="view=true">
+                <label class="onoffswitch-label" for="myonoffswitch">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                </label>
+            </div>
+
             <span>Trier par : </span>
             <button class="btn btn-secondary btn-xs" ng-click="predicate='title'">Titre</button>
             <button class="btn btn-secondary btn-xs" ng-click="predicate='releaseYear'">Année</button>
         </div>
     </div>
 
-    <ul class="thumbnails list-unstyled">
-        <li ng-repeat="movie in movies | filter : search | orderBy: predicate" class="col-sm-12">
-            <img ng-src="{{movie.poster | poster}}" class="col-sm-2">
-            <div class="caption">
-                <h3>{{movie.title | uppercase }}
-                    <button class="btn btn-primary" ng-click="gotoEdit('/edit/'+$index)"><span
-                            class="glyphicon glyphicon-edit"></span></button>
-                    <button class="btn btn-primary" ng-click="deleteMovie(movie)"><span
-                            class="glyphicon glyphicon-trash"></span></button>
-                </h3>
-                <p><strong>réalisateur :</strong> {{movie.directors}}</p>
-                <p><strong>acteurs :</strong> {{movie.actors}}</p>
-                <p><strong>année </strong>: {{movie.releaseYear}}</p>
-                <p><strong>résumé :</strong> {{movie.synopsis}}</p>
-                <p><strong>date :</strong> {{movie.lastViewDate | date:'dd/MM/yyyy @ h:mma'}}</p>
-                <p><strong>avis :</strong> {{movie.rate | stars}}</p>
-                <p><strong>prix :</strong> {{movie.price | currency : "€"}}</p>
+    <ul class="thumbnails list-unstyled" ng-switch="view">
+        <div ng-switch-when="false" container>
+            <div class="col-sm-4 container" ng-repeat="movie in movies | filter : search | orderBy: predicate">
+                <li class="col-sm-7">
+                    <img ng-src="{{movie.poster | poster}}" class="">
+                </li>
+                <div class="col-sm-1">
+                    <button class="btn btn-primary btn-xs" ng-click="gotoEdit('/edit/'+$index)">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                    <button class="btn btn-primary btn-xs" ng-click="deleteMovie(movie)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </div>
             </div>
-        </li>
+        </div>
+        <div ng-switch-when="true">
+            <li ng-repeat="movie in movies | filter : search | orderBy: predicate" class="col-sm-12">
+                <img ng-src="{{movie.poster | poster}}" class="col-sm-2">
+                <div class="caption">
+                    <h3>{{movie.title | uppercase }}
+                        <button class="btn btn-primary" ng-click="gotoEdit('/edit/'+$index)"><span
+                                class="glyphicon glyphicon-edit"></span></button>
+                        <button class="btn btn-primary" ng-click="deleteMovie(movie)"><span
+                                class="glyphicon glyphicon-trash"></span></button>
+                    </h3>
+                    <p><strong>réalisateur :</strong> {{movie.directors}}</p>
+                    <p><strong>acteurs :</strong> {{movie.actors}}</p>
+                    <p><strong>année </strong>: {{movie.releaseYear}}</p>
+                    <p><strong>résumé :</strong> {{movie.synopsis}}</p>
+                    <p><strong>date :</strong> {{movie.lastViewDate | date:'dd/MM/yyyy @ h:mma'}}</p>
+                    <p><strong>avis :</strong> {{movie.rate | stars}}</p>
+                    <p><strong>prix :</strong> {{movie.price | currency : "€"}}</p>
+                </div>
+            </li>
+        </div>
     </ul>
 
 
