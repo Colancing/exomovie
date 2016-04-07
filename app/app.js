@@ -7,8 +7,7 @@
 //]);
 
 var myApp = angular.module('myApp', [
-    'ngRoute', 'ngResource'
-    //'routeAppControllers'
+    'ngRoute', 'ngResource',
 ]);
 
 
